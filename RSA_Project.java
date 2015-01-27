@@ -16,8 +16,8 @@ public class RSA_Project {
 	private static final BigInteger NEGONE = new BigInteger("-1");
 	
 	public static void main(String[] args) throws IOException {
-		BigInteger b = new BigInteger("16");
-		System.out.println(ModularArithmetic.computelargexponent(TWO, b));
+//		BigInteger b = new BigInteger("16");
+//		System.out.println(ModularArithmetic.computelargexponent(TWO, b));
 		
 //		RSA receiver = new RSA(1048, "privatekeytestkevin.txt", "publickeytestkevin.txt");
 		//----------------------------

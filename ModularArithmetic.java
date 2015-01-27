@@ -73,14 +73,14 @@ public class ModularArithmetic {
         //result[2] = d the divisor, the gcd
 	}
 
-	public static boolean isPrime(BigInteger  N, int  k){
+	public static boolean isPrime(BigInteger  n, int  k){
+		Random rand = new Random(); // this makes a random integer
 		//following book's algorithm
 		BigInteger a, ans, tmp; //hold values later on
 		for(int i = 0 ; i < k ; i++){ // keep going until reached k
-			Random rand = new Random(Integer.MAX_VALUE); // this makes a random integer
 			// I tried to use System.nanoTime(), or some other time based seed so it kept chaning
 			// however, that didn't work, so I changed it to a constant seed
-			BigInteger upperLimit = N.add(ZERO);// this is the N-1, for the limit of random biginteger 
+			BigInteger upperLimit = n.add(NEGONE);// this is the N-1, for the limit of random biginteger 
 	        do {
 	        	a = new BigInteger(upperLimit.bitLength(), rand); //get  a randomly generated BigInteger
 	        	// it is uniformly distributed over the range 0 to (2^(upperLimit) - 1), inclusive
@@ -89,24 +89,28 @@ public class ModularArithmetic {
 	        if( a.compareTo(ZERO) == 0){ // the range includes zero, so make it 1 if it is 0, as per book
 	        	a = a.add(ONE); // make it 1
 	        }
-	        tmp =  N.add(NEGONE); // this is the N-1, the exponent
-	        ans = modexp(a, tmp, N); // use our modexponent function to get result
+	        tmp =  n.add(NEGONE); // this is the N-1, the exponent
+	        ans = modexp(a, tmp, n); // use our modexponent function to get result
 	        if (!(ans.compareTo(ONE) == 0)) { // if the ans is not equal to 1, then return false
 	        	return false; 
 	        }
 		}
-	return true;// after going through 1 to k, then you know its equal to 1 for all cases than thus return true
+		return true;
 	}
 
 	 public static BigInteger genPrime(int n){				
 	    	BigInteger numberofbits = new BigInteger(Integer.toString(n));
- 
+	    	BigInteger a = null;
+	    	Random rand = new Random();
+ 			if( n == 0){
+				return ONE; 		
+		 	}
 	    	BigInteger k = numberofbits.subtract(ONE);
 	    	BigInteger smallest = computelargexponent(TWO, k);
+		 
 	    	while(true){
-		    	Random rand = new Random();
-		    	BigInteger a = new BigInteger(n, rand);
-	    		if ( isPrime(a, n + 9999 ) &&  a.compareTo(ONE) == 1  && a.compareTo(smallest) >= 0){ 
+		    	a = new BigInteger(n, rand);
+	    		if ( a.compareTo(smallest) >= 0 && isPrime(a, n ) ){ 
 	    			return a;
 	    		}
 	    	}
@@ -130,9 +134,3 @@ public class ModularArithmetic {
 	    return result;
 	 }
 }
-
-//	public static BigInteger genPrime(int  n){
-//    	//TODO: CHANGE!!!
-//		Random rand = new Random();
-//		return new BigInteger(n, 100, rand);
-//	}
