@@ -6,18 +6,7 @@ Installation
 
 First download the files by doing:
 
-<code>git clone git@github.com:g12mcgov/RSA.git</code>
-
-In order to run this application, you will need the following JARs for Unit Testing:
-
-    hamcrest-core-1.3.jar
-    junit-4.11.jar
-
-If you're using Intellij, simply download the jars, and go to:
-
-    File > Project Structure > Dependencies
-
-Now, click on the "<code>+</code>" in the bottom left corner, and add the JARs. 
+<code>git clone git@github.com:gsheni/RSA.git</code>
 
 Running
 ========
@@ -45,5 +34,5 @@ To execute type:
 
 <code>java ModularArithmeticTest</code>
 
-Assuming all went well, 13 of the 13 test should have passed.
+All 13 of the 13 test should have passed.
 
