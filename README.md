@@ -36,3 +36,7 @@ To execute type:
 
 All 13 of the 13 test should have passed.
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gsheni/rsa/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
